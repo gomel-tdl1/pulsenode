@@ -91,6 +91,7 @@ func NewGethConfig(cfg *RocketPoolConfig) *GethConfig {
 				config.Network_Mainnet: gethTagProd,
 				config.Network_Prater:  gethTagTest,
 				config.Network_Devnet:  gethTagTest,
+				config.Network_PulseV4: gethTagTest,
 			},
 			AffectsContainers:    []config.ContainerID{config.ContainerID_Eth1},
 			EnvironmentVariables: []string{"EC_CONTAINER_TAG"},

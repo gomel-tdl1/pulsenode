@@ -151,6 +151,7 @@ func NewNethermindConfig(cfg *RocketPoolConfig) *NethermindConfig {
 				config.Network_Mainnet: nethermindTagProd,
 				config.Network_Prater:  nethermindTagTest,
 				config.Network_Devnet:  nethermindTagTest,
+				config.Network_PulseV4: nethermindTagTest,
 			},
 			AffectsContainers:    []config.ContainerID{config.ContainerID_Eth1},
 			EnvironmentVariables: []string{"EC_CONTAINER_TAG"},
