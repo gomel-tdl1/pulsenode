@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export CGO_ENABLED=0
-cd /smartnode/rocketpool-cli
+# cd /smartnode/rocketpool-cli
 
 # Build x64 version
 GOOS=linux GOARCH=amd64 go build -o rocketpool-cli-linux-amd64 rocketpool-cli.go

@@ -11,6 +11,7 @@ import (
 const (
 	gethTagProd          string = "ethereum/client-go:v1.12.0"
 	gethTagTest          string = "ethereum/client-go:v1.12.0"
+	gethTagPulseTest     string = "registry.gitlab.com/pulsechaincom/go-pulse:latest"
 	gethEventLogInterval int    = 1000
 	gethStopSignal       string = "SIGTERM"
 )
@@ -91,7 +92,7 @@ func NewGethConfig(cfg *RocketPoolConfig) *GethConfig {
 				config.Network_Mainnet: gethTagProd,
 				config.Network_Prater:  gethTagTest,
 				config.Network_Devnet:  gethTagTest,
-				config.Network_PulseV4: gethTagTest,
+				config.Network_PulseV4: gethTagPulseTest,
 			},
 			AffectsContainers:    []config.ContainerID{config.ContainerID_Eth1},
 			EnvironmentVariables: []string{"EC_CONTAINER_TAG"},
@@ -104,7 +105,7 @@ func NewGethConfig(cfg *RocketPoolConfig) *GethConfig {
 			Name:                 "Additional Flags",
 			Description:          "Additional custom command line flags you want to pass to Geth, to take advantage of other settings that the Smartnode's configuration doesn't cover.",
 			Type:                 config.ParameterType_String,
-			Default:              map[config.Network]interface{}{config.Network_All: ""},
+			Default:              map[config.Network]interface{}{config.Network_All: "", config.Network_PulseV4: "pulsechain-testnet-v4"},
 			AffectsContainers:    []config.ContainerID{config.ContainerID_Eth1},
 			EnvironmentVariables: []string{"EC_ADDITIONAL_FLAGS"},
 			CanBeBlank:           true,
