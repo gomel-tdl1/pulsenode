@@ -164,10 +164,6 @@ func NewRocketPoolConfig(rpDir string, isNativeMode bool) *RocketPoolConfig {
 		Name:        "Locally Managed",
 		Description: "Allow the Smartnode to manage the Execution and Consensus clients for you (Docker Mode)",
 		Value:       config.Mode_Local,
-	}, {
-		Name:        "Externally Managed",
-		Description: "Use existing Execution and Consensus clients that you manage on your own (Hybrid Mode)",
-		Value:       config.Mode_External,
 	}}
 
 	cfg := &RocketPoolConfig{
@@ -199,17 +195,9 @@ func NewRocketPoolConfig(rpDir string, isNativeMode bool) *RocketPoolConfig {
 			CanBeBlank:           false,
 			OverwriteOnUpgrade:   false,
 			Options: []config.ParameterOption{{
-				Name:        "Geth",
+				Name:        "Go-Pulse",
 				Description: "Geth is one of the three original implementations of the Ethereum protocol. It is written in Go, fully open source and licensed under the GNU LGPL v3.",
 				Value:       config.ExecutionClient_Geth,
-			}, {
-				Name:        "Nethermind",
-				Description: getAugmentedEcDescription(config.ExecutionClient_Nethermind, "Nethermind is a high-performance full Ethereum protocol client with very fast sync speeds. Nethermind is built with proven industrial technologies such as .NET 6 and the Kestrel web server. It is fully open source."),
-				Value:       config.ExecutionClient_Nethermind,
-			}, {
-				Name:        "Besu",
-				Description: getAugmentedEcDescription(config.ExecutionClient_Besu, "Hyperledger Besu is a robust full Ethereum protocol client. It uses a novel system called \"Bonsai Trees\" to store its chain data efficiently, which allows it to access block states from the past and does not require pruning. Besu is fully open source and written in Java."),
-				Value:       config.ExecutionClient_Besu,
 			}},
 		},
 
@@ -264,22 +252,6 @@ func NewRocketPoolConfig(rpDir string, isNativeMode bool) *RocketPoolConfig {
 				Name:        "Lighthouse",
 				Description: "Lighthouse is a Consensus client with a heavy focus on speed and security. The team behind it, Sigma Prime, is an information security and software engineering firm who have funded Lighthouse along with the Ethereum Foundation, Consensys, and private individuals. Lighthouse is built in Rust and offered under an Apache 2.0 License.",
 				Value:       config.ConsensusClient_Lighthouse,
-			}, {
-				Name:        "Lodestar",
-				Description: "Lodestar is the fifth open-source Ethereum consensus client. It is written in Typescript maintained by ChainSafe Systems. Lodestar, their flagship product, is a production-capable Beacon Chain and Validator Client uniquely situated as the go-to for researchers and developers for rapid prototyping and browser usage.",
-				Value:       config.ConsensusClient_Lodestar,
-			}, {
-				Name:        "Nimbus",
-				Description: "Nimbus is a Consensus client implementation that strives to be as lightweight as possible in terms of resources used. This allows it to perform well on embedded systems, resource-restricted devices -- including Raspberry Pis and mobile devices -- and multi-purpose servers.",
-				Value:       config.ConsensusClient_Nimbus,
-			}, {
-				Name:        "Prysm",
-				Description: "Prysm is a Go implementation of Ethereum Consensus protocol with a focus on usability, security, and reliability. Prysm is developed by Prysmatic Labs, a company with the sole focus on the development of their client. Prysm is written in Go and released under a GPL-3.0 license.",
-				Value:       config.ConsensusClient_Prysm,
-			}, {
-				Name:        "Teku",
-				Description: "PegaSys Teku (formerly known as Artemis) is a Java-based Ethereum 2.0 client designed & built to meet institutional needs and security requirements. PegaSys is an arm of ConsenSys dedicated to building enterprise-ready clients and tools for interacting with the core Ethereum platform. Teku is Apache 2 licensed and written in Java, a language notable for its maturity & ubiquity.",
-				Value:       config.ConsensusClient_Teku,
 			}},
 		},
 

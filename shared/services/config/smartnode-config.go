@@ -2,12 +2,10 @@ package config
 
 import (
 	"fmt"
-	"path/filepath"
-	"strings"
-
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/rocket-pool/smartnode/shared"
 	"github.com/rocket-pool/smartnode/shared/types/config"
+	"path/filepath"
 )
 
 // Constants
@@ -936,28 +934,29 @@ func (cfg *SmartnodeConfig) GetRewardsSubmissionBlockMaps() []uint64 {
 
 func getNetworkOptions() []config.ParameterOption {
 	options := []config.ParameterOption{
+		//{
+		//	Name:        "Ethereum Mainnet",
+		//	Description: "This is the real Ethereum main network, using real ETH and real RPL to make real validators.",
+		//	Value:       config.Network_Mainnet,
+		//}, {
+		//	Name:        "Prater Testnet",
+		//	Description: "This is the Prater test network, using free fake ETH and free fake RPL to make fake validators.\nUse this if you want to practice running the Smartnode in a free, safe environment before moving to Mainnet.",
+		//	Value:       config.Network_Prater,
+		//},
 		{
-			Name:        "Ethereum Mainnet",
-			Description: "This is the real Ethereum main network, using real ETH and real RPL to make real validators.",
-			Value:       config.Network_Mainnet,
-		}, {
-			Name:        "Prater Testnet",
-			Description: "This is the Prater test network, using free fake ETH and free fake RPL to make fake validators.\nUse this if you want to practice running the Smartnode in a free, safe environment before moving to Mainnet.",
-			Value:       config.Network_Prater,
-		}, {
 			Name:        "Pulsechain V4 Testnet",
 			Description: "Pulsechain V4 Testnet",
 			Value:       config.Network_PulseV4,
 		},
 	}
 
-	if strings.HasSuffix(shared.RocketPoolVersion, "-dev") {
-		options = append(options, config.ParameterOption{
-			Name:        "Devnet",
-			Description: "This is a development network used by Rocket Pool engineers to test new features and contract upgrades before they are promoted to Prater for staging. You should not use this network unless invited to do so by the developers.",
-			Value:       config.Network_Devnet,
-		})
-	}
+	//if strings.HasSuffix(shared.RocketPoolVersion, "-dev") {
+	//	options = append(options, config.ParameterOption{
+	//		Name:        "Devnet",
+	//		Description: "This is a development network used by Rocket Pool engineers to test new features and contract upgrades before they are promoted to Prater for staging. You should not use this network unless invited to do so by the developers.",
+	//		Value:       config.Network_Devnet,
+	//	})
+	//}
 
 	return options
 }

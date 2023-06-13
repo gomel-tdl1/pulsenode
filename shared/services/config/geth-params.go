@@ -105,7 +105,7 @@ func NewGethConfig(cfg *RocketPoolConfig) *GethConfig {
 			Name:                 "Additional Flags",
 			Description:          "Additional custom command line flags you want to pass to Geth, to take advantage of other settings that the Smartnode's configuration doesn't cover.",
 			Type:                 config.ParameterType_String,
-			Default:              map[config.Network]interface{}{config.Network_All: "", config.Network_PulseV4: "pulsechain-testnet-v4"},
+			Default:              map[config.Network]interface{}{config.Network_All: ""},
 			AffectsContainers:    []config.ContainerID{config.ContainerID_Eth1},
 			EnvironmentVariables: []string{"EC_ADDITIONAL_FLAGS"},
 			CanBeBlank:           true,
