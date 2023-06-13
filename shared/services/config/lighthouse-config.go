@@ -10,6 +10,7 @@ const (
 	lighthouseTagPortableProd string = "sigp/lighthouse:v4.2.0"
 	lighthouseTagModernTest   string = "sigp/lighthouse:v4.2.0-modern"
 	lighthouseTagModernProd   string = "sigp/lighthouse:v4.2.0-modern"
+	lighthouseTagPulseTest    string = "registry.gitlab.com/pulsechaincom/lighthouse-pulse:latest"
 	defaultLhMaxPeers         uint16 = 80
 )
 
@@ -59,7 +60,7 @@ func NewLighthouseConfig(cfg *RocketPoolConfig) *LighthouseConfig {
 				config.Network_Mainnet: getLighthouseTagProd(),
 				config.Network_Prater:  getLighthouseTagTest(),
 				config.Network_Devnet:  getLighthouseTagTest(),
-				config.Network_PulseV4: getLighthouseTagTest(),
+				config.Network_PulseV4: getLighthouseTagPulseTest(),
 			},
 			AffectsContainers:    []config.ContainerID{config.ContainerID_Eth2, config.ContainerID_Validator},
 			EnvironmentVariables: []string{"BN_CONTAINER_TAG", "VC_CONTAINER_TAG"},
@@ -139,4 +140,8 @@ func getLighthouseTagTest() string {
 		return lighthouseTagPortableTest
 	}
 	return lighthouseTagModernTest
+}
+
+func getLighthouseTagPulseTest() string {
+	return lighthouseTagPulseTest
 }
