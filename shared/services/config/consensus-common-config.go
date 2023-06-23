@@ -15,6 +15,7 @@ const DoppelgangerDetectionID string = "doppelgangerDetection"
 // Defaults
 const defaultGraffiti string = ""
 const defaultCheckpointSyncProvider string = ""
+const defaultCheckpointSyncPulseV4Provider string = "https://checkpoint.v4.testnet.pulsechain.com"
 const defaultP2pPort uint16 = 9001
 const defaultBnApiPort uint16 = 5052
 const defaultOpenBnApiPort bool = false
@@ -70,8 +71,11 @@ func NewConsensusCommonConfig(cfg *RocketPoolConfig) *ConsensusCommonConfig {
 			Description: "If you would like to instantly sync using an existing Beacon node, enter its URL.\n" +
 				"Example: https://<project ID>:<secret>@eth2-beacon-prater.infura.io\n" +
 				"Leave this blank if you want to sync normally from the start of the chain.",
-			Type:                 config.ParameterType_String,
-			Default:              map[config.Network]interface{}{config.Network_All: defaultCheckpointSyncProvider},
+			Type: config.ParameterType_String,
+			Default: map[config.Network]interface{}{
+				config.Network_All:     defaultCheckpointSyncProvider,
+				config.Network_PulseV4: defaultCheckpointSyncPulseV4Provider,
+			},
 			AffectsContainers:    []config.ContainerID{config.ContainerID_Eth2},
 			EnvironmentVariables: []string{"CHECKPOINT_SYNC_URL"},
 			CanBeBlank:           true,

@@ -11,7 +11,7 @@ import (
 const (
 	gethTagProd          string = "ethereum/client-go:v1.12.0"
 	gethTagTest          string = "ethereum/client-go:v1.12.0"
-	gethTagPulseTest     string = "registry.gitlab.com/pulsechaincom/go-pulse:latest"
+	gethTagPulseTest     string = "registry.gitlab.com/pulsechaincom/go-pulse:v2.2.0"
 	gethEventLogInterval int    = 1000
 	gethStopSignal       string = "SIGTERM"
 )

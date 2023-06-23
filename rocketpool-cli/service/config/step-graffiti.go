@@ -37,20 +37,21 @@ func createGraffitiStep(wiz *wizard, currentStep int, totalSteps int) *textBoxWi
 
 		// Check to see if it supports checkpoint sync or doppelganger detection
 		unsupportedParams := client.(cfgtypes.LocalConsensusConfig).GetUnsupportedCommonParams()
-		supportsCheckpointSync := true
+		//supportsCheckpointSync := true
 		supportsDoppelganger := true
 		for _, param := range unsupportedParams {
 			if param == config.CheckpointSyncUrlID {
-				supportsCheckpointSync = false
+				//supportsCheckpointSync = false
 			} else if param == config.DoppelgangerDetectionID {
 				supportsDoppelganger = false
 			}
 		}
 
 		// Move to the next appropriate dialog
-		if supportsCheckpointSync {
-			wiz.checkpointSyncProviderModal.show()
-		} else if supportsDoppelganger {
+		//if supportsCheckpointSync {
+		//	wiz.checkpointSyncProviderModal.show()
+		//} else
+		if supportsDoppelganger {
 			wiz.doppelgangerDetectionModal.show()
 		} else {
 			wiz.metricsModal.show()

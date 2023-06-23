@@ -69,7 +69,7 @@ func newWizard(md *mainDisplay) *wizard {
 	wiz.consensusLocalPrysmWarning = createPrysmWarningStep(wiz, 5, totalDockerSteps)
 	wiz.consensusLocalTekuWarning = createTekuWarningStep(wiz, 5, totalDockerSteps)
 	wiz.graffitiModal = createGraffitiStep(wiz, 5, totalDockerSteps)
-	wiz.checkpointSyncProviderModal = createCheckpointSyncStep(wiz, 5, totalDockerSteps)
+	//wiz.checkpointSyncProviderModal = createCheckpointSyncStep(wiz, 5, totalDockerSteps)
 	wiz.doppelgangerDetectionModal = createDoppelgangerStep(wiz, 5, totalDockerSteps)
 	wiz.lighthouseExternalSettingsModal = createExternalLhStep(wiz, 5, totalDockerSteps)
 	wiz.nimbusExternalSettingsModal = createExternalNimbusStep(wiz, 5, totalDockerSteps)
