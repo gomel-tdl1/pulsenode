@@ -357,7 +357,6 @@ func getNodeTrusted(c *cli.Context) (bool, error) {
 var ethClientSyncLock sync.Mutex
 
 func checkExecutionClientStatus(ecMgr *ExecutionClientManager, cfg *config.RocketPoolConfig) (bool, rocketpool.ExecutionClient, error) {
-
 	// Check the EC status
 	mgrStatus := ecMgr.CheckStatus(cfg)
 	if ecMgr.primaryReady {
@@ -393,7 +392,7 @@ func checkExecutionClientStatus(ecMgr *ExecutionClientManager, cfg *config.Rocke
 		return false, nil, fmt.Errorf("Primary execution client is unavailable (%s) and fallback execution client is unavailable (%s), no execution clients are ready.", mgrStatus.PrimaryClientStatus.Error, mgrStatus.FallbackClientStatus.Error)
 	}
 
-	return false, nil, fmt.Errorf("Primary execution client is unavailable (%s) and no fallback execution client is configured.", mgrStatus.PrimaryClientStatus.Error)
+	return false, nil, fmt.Errorf("Primary execution client is unavailable (%s) and no fallback execution client is configured. Storage address: %s.\n Formatted: %s", mgrStatus.PrimaryClientStatus.Error, cfg.Smartnode.GetStorageAddress(), common.HexToAddress(cfg.Smartnode.GetStorageAddress()))
 }
 
 func checkBeaconClientStatus(bcMgr *BeaconClientManager) (bool, error) {
